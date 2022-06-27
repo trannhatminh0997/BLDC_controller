@@ -1,0 +1,139 @@
+
+
+
+
+	
+	
+	
+//	Flash_ProgramPage("First data written to flash",DATA_START_ADDRESS,LENGTH_START_ADDRESS);
+//	Flash_ReadChar(data,DATA_START_ADDRESS,LENGTH_START_ADDRESS);
+//	HAL_Delay(2000);
+//	Flash_ProgramPage("New data",DATA_START_ADDRESS,LENGTH_START_ADDRESS);
+//	HAL_Delay(100);
+//	Flash_Write_Char(DATA_START_ADDRESS, "cacascascaserwer");
+//	Flash_Write_Char(DATA_START_ADDRESS, "cacavjsdkljcklagj;erwer");
+
+	
+	
+//	test = (uint32_t*)(&(bldc.Angle_phase));
+//	val = *test;
+	
+	
+
+//	Flash_Unlock();
+//	Flash_Erase(DATA_START_ADDRESS);
+//	HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,DATA_START_ADDRESS,0xAAAAAAAA);
+//	Flash_Lock();
+//	
+//	
+//	Flash_ReadChar(data,DATA_START_ADDRESS,LENGTH_START_ADDRESS+10);
+	
+	
+float point[60] = {0};
+
+
+float angle = 0;
+
+
+uint8_t i = 0;
+
+
+
+uint32_t  test,res;
+
+	
+	
+//	value =*(float*)(&test);
+
+bldc.Poles_.baseAngle = 32.2;
+bldc.Poles_.numOfPoles = 7;
+
+
+Flash_Write_Obj(AddrPage127,(uint32_t)(&bldc.Poles_),sizeof(bldc.Poles_)); 
+
+
+//*(((uint16_t*)(&bldc.Poles_))+1) = 0x20;
+
+Flash_Read_Obj(AddrPage127,(uint32_t)(&Test_Pole),sizeof(Test_Pole));
+	
+	test = 0x0801FC40;
+	res = ((test)/1024)*1024;
+
+
+
+
+
+
+	
+	
+	
+//	Flash_ProgramPage("First data written to flash",DATA_START_ADDRESS,LENGTH_START_ADDRESS);
+//	Flash_ReadChar(data,DATA_START_ADDRESS,LENGTH_START_ADDRESS);
+//	HAL_Delay(2000);
+//	Flash_ProgramPage("New data",DATA_START_ADDRESS,LENGTH_START_ADDRESS);
+//	HAL_Delay(100);
+//	Flash_Write_Char(DATA_START_ADDRESS, "cacascascaserwer");
+//	Flash_Write_Char(DATA_START_ADDRESS, "cacavjsdkljcklagj;erwer");
+
+	
+	
+//	test = (uint32_t*)(&(bldc.Angle_phase));
+//	val = *test;
+	
+	
+
+//	Flash_Unlock();
+//	Flash_Erase(DATA_START_ADDRESS);
+//	HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,DATA_START_ADDRESS,0xAAAAAAAA);
+//	Flash_Lock();
+//	
+//	
+//	Flash_ReadChar(data,DATA_START_ADDRESS,LENGTH_START_ADDRESS+10);
+	
+	
+//	value =*(float*)(&test);
+
+bldc.Poles_.baseAngle = 32.2;
+bldc.Poles_.numOfPoles = 7;
+
+
+Flash_Write_Obj(AddrPage127,(uint32_t)(&bldc.Poles_),sizeof(bldc.Poles_)); 
+
+
+//*(((uint16_t*)(&bldc.Poles_))+1) = 0x20;
+
+Flash_Read_Obj(AddrPage127,(uint32_t)(&Test_Pole),sizeof(Test_Pole));
+	
+	test = 0x0801FC40;
+	res = ((test)/1024)*1024;
+
+
+
+//		if(adcVal >5) break;
+		
+//		bldc.Cur = (((float)adcVal/4096.0)*3.3)/0.01;
+		
+	//		HAL_UART_Receive(&huart1,rxData,3,1000);	//	//		HAL_UART_Receive(&huart1,rxData,3,1000);	HAL_UART_Receive(&huart1,rxData,3,1000);//		HAL_UART_Receive(&huart1,rxData,3,1000);
+
+
+adcVal = HAL_ADC_GetValue(&hadc1);
+		if(adcVal > maxAdcVal)maxAdcVal = adcVal;
+		sprintf(txData,"ADC : %d\n",(uint16_t)adcVal);
+		HAL_UART_Transmit(&huart1,(uint8_t*)txData,strlen(txData),1000);
+		//	HAL_UART_Receive_DMA(&huart1,rxData,3);
+//	HAL_UART_Transmit_DMA(&huart1,(uint8_t*)txData,sizeof(txData));//	HAL_ADC_Start_IT(&hadc1);
+	
+//	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&adcVal,1);
+	HAL_ADC_Start(&hadc1);
+
+//void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+//{
+//	if(hadc == &hadc1)
+//	{
+//		adcVal = HAL_ADC_GetValue(&hadc1);
+//	}
+//}
+
+
+
+
